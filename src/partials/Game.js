@@ -1,4 +1,5 @@
-import { SVG_NS } from "../settings"
+import { SVG_NS } from "../settings";
+
 
 export default class Game {
 
@@ -11,11 +12,13 @@ export default class Game {
 	}
 
 	render() {
+		this.gameElement.innerHTML = "";
+
 		let svg = document.createElementNS(SVG_NS, "svg");
 		svg.setAttributeNS(null, "width", this.width);
 		svg.setAttributeNS(null, "height", this.height);
 		svg.setAttributeNS(null, "viewBox", `0 0 ${this.width} ${this.height}`);
 		this.gameElement.appendChild(svg);
 	}
-
+	
 }
