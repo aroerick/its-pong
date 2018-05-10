@@ -71,6 +71,7 @@ html {
 }
 
 body {
+  color: purple;
   align-items: center;
   display: flex;
   font-family: 'Silkscreen Web', monotype;

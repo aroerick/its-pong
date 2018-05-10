@@ -8,7 +8,7 @@ export default class Player {
       this.height = height;
       this.x = x;
       this.y = y;
-      this.speed = 10;
+      this.speed = 16;
       this.score = 0;
 
       document.addEventListener("keydown", event => {
@@ -24,10 +24,10 @@ export default class Player {
     }
 
     up() {
-      this.y -= this.speed;
+      this.y = Math.max(5, this.y - this.speed);
     }
     down() {
-      this.y += this.speed;
+      this.y = Math.min(this.boardHeight - this.height - 5, this.y + this.speed)
     }
 
     render(svg) {
@@ -36,7 +36,7 @@ export default class Player {
       paddle.setAttributeNS(null, "height", this.height);
       paddle.setAttributeNS(null, "x", this.x);
       paddle.setAttributeNS(null, "y", this.y);
-      paddle.setAttributeNS(null, "fill", "white");
+      paddle.setAttributeNS(null, "fill", "grey");
 
       svg.appendChild(paddle);
     }
