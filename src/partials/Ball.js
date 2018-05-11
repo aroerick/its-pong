@@ -68,7 +68,6 @@ export default class Ball {
     goooooal(player){
         player.score++;
         this.reset();
-        console.log(player.score);
     }
 
     render(svg, playerOne, playerTwo) {
