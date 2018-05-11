@@ -5,7 +5,7 @@ import Ball from "./Ball";
 
 export default class Game {
 
-	constructor(element, width, height) {
+	constructor(element, width, height, spaceBar) {
 		this.element = element;
 		this.width = width;
 		this.height = height;
@@ -15,6 +15,8 @@ export default class Game {
 		this.board = new Board(
 			this.width, 
 			this.height
+		
+			
 		);
 
 		this.paddleWidth = 8;
@@ -48,9 +50,21 @@ export default class Game {
 			this.width,
 			this.height
 		);
+
+		this.pause = false;
+
+		document.addEventListener("keydown", event => {
+			if (event.key == KEYS.spaceBar) {
+				this.pause = !this.pause;						
+			}
+		});
 	}
 
 	render() {
+		if (this.pause) {
+			return;
+		}
+
 		this.gameElement.innerHTML = "";
 
 		let svg = document.createElementNS(SVG_NS, "svg");
@@ -62,7 +76,7 @@ export default class Game {
 		this.board.render(svg);
 		this.playerOne.render(svg);
 		this.playerTwo.render(svg);
-		this.ball.render(svg);
+		this.ball.render(svg, this.playerOne, this.playerTwo);
 	}
 
 }

@@ -32,11 +32,11 @@ export default class Player {
 
     render(svg) {
       let paddle = document.createElementNS(SVG_NS, "rect");
-      paddle.setAttributeNS(null, "width", this.width);
-      paddle.setAttributeNS(null, "height", this.height);
-      paddle.setAttributeNS(null, "x", this.x);
-      paddle.setAttributeNS(null, "y", this.y);
-      paddle.setAttributeNS(null, "fill", "grey");
+        paddle.setAttributeNS(null, "width", this.width);
+        paddle.setAttributeNS(null, "height", this.height);
+        paddle.setAttributeNS(null, "x", this.x);
+        paddle.setAttributeNS(null, "y", this.y);
+        paddle.setAttributeNS(null, "fill", "grey");
 
       svg.appendChild(paddle);
     }
