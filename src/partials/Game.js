@@ -47,14 +47,14 @@ export default class Game {
 		);
 
 		this.scoreOne = new Score (
-			this.width / 2 - 50,
-			30,
-			30
+			this.width / 2 + 30,
+			220,
+			300
 		);
 		this.scoreTwo = new Score (
-			this.width / 2 + 50,
-			30,
-			30
+			this.width / 2 - 250,
+			220,
+			300
 		);
 
 		this.radius = 8;
