@@ -8,7 +8,7 @@ export default class Player {
       this.height = height;
       this.x = x;
       this.y = y;
-      this.speed = 16;
+      this.speed = 24;
       this.score = 0;
 
       document.addEventListener("keydown", event => {

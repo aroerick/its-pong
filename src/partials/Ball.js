@@ -6,6 +6,26 @@ export default class Ball {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.direction = 1;
+        this.ping = [new Audio("../../public/sounds/pings/pong-01.wav"),
+                    new Audio("../../public/sounds/pings/pong-02.wav"),
+                    new Audio("../../public/sounds/pings/pong-03.wav"),
+                    new Audio("../../public/sounds/pings/censor-beep-1.mp3"),
+                    new Audio("../../public/sounds/pings/dun_dun_1.mp3"),
+                    new Audio("../../public/sounds/pings/erro.mp3"),
+                    new Audio("../../public/sounds/pings/incorrect.swf.mp3"),
+                    new Audio("../../public/sounds/pings/magic_immune.mp3"),
+                    new Audio("../../public/sounds/pings/movie_1.mp3"),
+                    new Audio("../../public/sounds/pings/perfect-fart.mp3"),
+                    new Audio("../../public/sounds/pings/shoryuken.mp3"),
+                    new Audio("../../public/sounds/pings/tindeck_1.mp3")];
+        this.boom = [new Audio("../../public/sounds/booms/070-challenge-lose.mp3"),
+                    // new Audio("../../public/sounds/booms/comic003.mp3"),
+                    new Audio("../../public/sounds/booms/haha.swf.mp3"),
+                    new Audio("../../public/sounds/booms/khaaan.swf.mp3"),
+                    new Audio("../../public/sounds/booms/mlg-airhorn.mp3"),
+                    new Audio("../../public/sounds/booms/nooo.swf.mp3"),
+                    new Audio("../../public/sounds/booms/pong-04.wav"),
+                    new Audio("../../public/sounds/booms/that_was_easy.mp3")];
 
         this.reset();
     }
@@ -18,7 +38,7 @@ export default class Ball {
         while(this.vy === 0 ){
         this.vy = Math.floor(Math.random() * 10 - 5);
         }
-        this.vx = this.direction * (6 - Math.abs(this.vy));     
+        this.vx = this.direction * (6 - Math.abs(this.vy));    
     }
 
     wallCollision() {
@@ -47,6 +67,7 @@ export default class Ball {
                 && (this.y >= topY && this.y <= bottomY)
             ) {
                 this.vx *= -1;
+                this.ping[Math.floor(Math.random() * 12)].play();
             }
         } else {
             let paddle = playerOne.coordinates(
@@ -61,6 +82,7 @@ export default class Ball {
                 && (this.y >= topY && this.y <= bottomY)
             ) {
                 this.vx *= -1;
+                this.ping[Math.floor(Math.random() * 12)].play();
             }
         }
     }
@@ -68,6 +90,7 @@ export default class Ball {
     goooooal(player){
         player.score++;
         this.reset();
+        this.boom[Math.floor(Math.random() * 7)].play(); 
     }
 
     render(svg, playerOne, playerTwo) {
