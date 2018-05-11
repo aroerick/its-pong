@@ -19,7 +19,6 @@ export default class Ball {
                     new Audio("../../public/sounds/pings/shoryuken.mp3"),
                     new Audio("../../public/sounds/pings/tindeck_1.mp3")];
         this.boom = [new Audio("../../public/sounds/booms/070-challenge-lose.mp3"),
-                    // new Audio("../../public/sounds/booms/comic003.mp3"),
                     new Audio("../../public/sounds/booms/haha.swf.mp3"),
                     new Audio("../../public/sounds/booms/khaaan.swf.mp3"),
                     new Audio("../../public/sounds/booms/mlg-airhorn.mp3"),
