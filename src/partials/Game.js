@@ -95,17 +95,17 @@ export default class Game {
 		this.scoreOne.render(svg, this.playerOne.score);
 		this.scoreTwo.render(svg, this.playerTwo.score);
 
+		if (this.playerOne.score === 10) {
+			this.victory.render(svg, this.playerOne.player);
+			return;
+		} else if (this.playerTwo.score === 10) {
+			this.victory.render(svg, this.playerTwo.player);
+			return;
+		}
+
 		this.playerOne.render(svg);
 		this.playerTwo.render(svg);
 		this.ball.render(svg, this.playerOne, this.playerTwo);
-
-		if (this.playerOne.score === 9) {
-			this.victory.render(svg, this.playerOne.player);
-			this.pause = true;
-		} else if (this.playerTwo.score === 9) {
-			this.victory.render(svg, this.playerTwo.player);
-			this.pause = true;
-		}
 	}
 
 }
