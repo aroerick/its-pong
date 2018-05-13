@@ -111,10 +111,10 @@ export default class Ball {
         const rightGoal = this.x + this.radius >= this.boardWidth;
 
         if(leftGoal){
-            this.goooooal(playerOne);
+            this.goooooal(playerTwo);
             this.direction = -1;
         } else if (rightGoal){
-            this.goooooal(playerTwo);
+            this.goooooal(playerOne);
             this.direction = 1;
         }
     }

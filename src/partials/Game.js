@@ -2,7 +2,8 @@ import { SVG_NS, KEYS } from "../settings";
 import Board from "./Board";
 import Player from "./Player";
 import Ball from "./Ball";
-import Score from "./Score"
+import Score from "./Score";
+import Victory from "./Victory"
 
 export default class Game {
 
@@ -15,9 +16,7 @@ export default class Game {
 
 		this.board = new Board(
 			this.width, 
-			this.height
-		
-			
+			this.height			
 		);
 
 		this.paddleWidth = 8;
@@ -47,12 +46,12 @@ export default class Game {
 		);
 
 		this.scoreOne = new Score (
-			this.width / 2 + 30,
+			this.width / 2 - 240,
 			220,
 			300
 		);
 		this.scoreTwo = new Score (
-			this.width / 2 - 250,
+			this.width / 2 + 30,
 			220,
 			300
 		);
@@ -72,6 +71,11 @@ export default class Game {
 				this.pause = !this.pause;						
 			}
 		});
+
+		this.victory = new Victory (
+			this.width,
+			this.height
+		);
 	}
 
 	render() {
@@ -94,6 +98,14 @@ export default class Game {
 		this.playerOne.render(svg);
 		this.playerTwo.render(svg);
 		this.ball.render(svg, this.playerOne, this.playerTwo);
+
+		if (this.playerOne.score === 9) {
+			this.victory.render(svg, this.playerOne.player);
+			this.pause = true;
+		} else if (this.playerTwo.score === 9) {
+			this.victory.render(svg, this.playerTwo.player);
+			this.pause = true;
+		}
 	}
 
 }
