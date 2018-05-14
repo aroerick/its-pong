@@ -6,6 +6,7 @@ export default class Ball {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.direction = 1;
+        this.rally = 0;
         this.ping = [new Audio("../../public/sounds/pings/pong-01.wav"),
                     new Audio("../../public/sounds/pings/pong-02.wav"),
                     new Audio("../../public/sounds/pings/pong-03.wav"),
@@ -34,6 +35,7 @@ export default class Ball {
         this.y = this.boardHeight / 2;
 
         this.vy = 0;
+        this.rally = 0;
         while(this.vy === 0 ){
         this.vy = Math.floor(Math.random() * 10 - 5);
         }
@@ -67,6 +69,7 @@ export default class Ball {
             ) {
                 this.vx *= -1;
                 this.ping[Math.floor(Math.random() * 12)].play();
+                this.rally++
             }
         } else {
             let paddle = playerOne.coordinates(
@@ -82,6 +85,7 @@ export default class Ball {
             ) {
                 this.vx *= -1;
                 this.ping[Math.floor(Math.random() * 12)].play();
+                this.rally++
             }
         }
     }
@@ -105,7 +109,19 @@ export default class Ball {
         ball.setAttributeNS(null, "cx", this.x);
         ball.setAttributeNS(null, "cy", this.y);
 
-        svg.appendChild(ball);
+        let fire = document.createElementNS(SVG_NS, "circle");
+        fire.setAttributeNS(null, "r", (this.radius * 0.75));
+        fire.setAttributeNS(null, "fill", "#E0A400");
+        fire.setAttributeNS(null, "stroke", "darkred");
+        fire.setAttributeNS(null, "stroke-width", 3);
+        fire.setAttributeNS(null, "cx", this.x);
+        fire.setAttributeNS(null, "cy", this.y);
+
+        if(this.rally <= 10) {
+            svg.appendChild(ball);
+        } else if (this.rally > 10) {
+            svg.appendChild(fire);
+        }
 
         const leftGoal = this.x - this.radius <= 0;
         const rightGoal = this.x + this.radius >= this.boardWidth;
