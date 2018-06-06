@@ -26,17 +26,17 @@ A basic pong game using SVGs.
 * ▲ : up
 * ▼: down
 
-##Tech
+## Tech
 
 Pong is built almost completely in JavaScript (lite html and css).
 
-It's all about being object oriented.
+It's all about being object oriented. Instantiate. 
 
-##Learning
+## Learning
 
 Learned so much stuff. OOP is really interesting and makes workflow real smooth.
 
-##Strectch Goals
+## Strectch Goals
 
 Added a victory screen based on which player wins.
 
